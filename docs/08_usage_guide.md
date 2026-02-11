@@ -91,4 +91,24 @@ To rebuild the combined index after re-extraction, the combine script needs to b
 
 ---
 
+## New: ViT-B/16 and Model Comparison Usage
+
+### Extract ViT-B/16 Features
+```powershell
+python src/extractor_vit.py
+```
+Extracts features using the ViT-B/16 model for all datasets. Output is saved in `features/` as *_vit_features.pkl files.
+
+### Compare ResNet50 vs ViT-B/16
+```powershell
+python src/compare_benchmarks.py --max-queries 500
+```
+Benchmarks both models on all datasets, outputs accuracy/speed tables and new graphs in `graphs/`.
+
+### Fast Search with FAISS (Streamlit App)
+- The web app uses FAISS for fast similarity search if available.
+- For large datasets, retrieval is 2-3x faster with ViT features.
+
+---
+
 *Previous: [07 - Model & Theory](07_model_theory.md) | Next: [09 - Troubleshooting](09_troubleshooting.md)*

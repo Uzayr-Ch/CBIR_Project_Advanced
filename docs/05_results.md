@@ -28,35 +28,34 @@ ___________________________________________________________________________
 
 ---
 
-## Analysis
+## Multi-Model Results: ResNet50 vs ViT-B/16
 
-### Corel-1K — 97.63% mAP
+| Dataset      | Model      | mAP (%) | Latency (ms) | Winner |
+|:------------|:-----------|--------:|-------------:|:------:|
+| Corel-1K    | ResNet50   | 95.74   | 6.47         |        |
+| Corel-1K    | **ViT-B/16** | **96.16** | **2.89**   | ✓ ViT |
+| Corel-5K    | **ResNet50** | **51.56** | 33.97      | ✓ ResNet |
+| Corel-5K    | ViT-B/16   | 49.26   | **14.53**    |        |
+| Corel-10K   | **ResNet50** | **85.40** | 69.95      | ✓ ResNet |
+| Corel-10K   | ViT-B/16   | 77.72   | **27.54**    |        |
+| Caltech-101 | ResNet50   | 99.02   | 64.53        |        |
+| Caltech-101 | **ViT-B/16** | **99.24** | **25.05** | ✓ ViT |
 
-- Only 10 categories → easier to discriminate
-- 100 images per category → strong class representation
-- High intra-class visual similarity
-- Near-perfect retrieval performance
+---
 
-### Corel-5K — 51.90% mAP
+## Updated Analysis: ViT-B/16 vs ResNet50
 
-- 50 categories → much more diverse
-- Some categories visually overlap (nature scenes etc.)
-- Lower per-class sample density compared to search space
-- Hardest dataset for this system
+- **ViT-B/16 outperforms ResNet50 on Corel-1K and Caltech-101** in both accuracy and speed.
+- **ResNet50 remains best for Corel-5K and Corel-10K** in accuracy, but ViT is much faster.
+- **ViT features are 768-D (vs 2048-D for ResNet50)**, making them more compact and efficient for indexing.
+- **Retrieval latency is 2-3x lower with ViT** on all datasets.
+- **Speedup:** ViT enables real-time search even on large datasets.
 
-### Caltech-101 — 85.20% mAP
+### Key Takeaways
 
-- 102 object categories (named: accordion, butterfly, etc.)
-- Unbalanced (40-800 images per class)
-- Object-centric images → cleaner features
-- Surprisingly strong despite high category count
-
-### Corel-10K — 81.92% mAP
-
-- 100 categories, 100 images each
-- High diversity in visual content
-- Some categories are visually ambiguous
-- Still strong performance (>80%)
+1. **ViT-B/16 is recommended for fast, interactive search** where speed is critical and accuracy is comparable.
+2. **ResNet50 is still preferred for maximum accuracy** on large, diverse datasets.
+3. **Both models are supported** and can be selected based on deployment needs.
 
 ---
 
