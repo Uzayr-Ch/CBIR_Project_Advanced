@@ -21,7 +21,7 @@
 
 ---
 
-## Project Summary
+## Project Summary (Updated)
 
 | Field | Value |
 |:------|:------|
@@ -29,10 +29,22 @@
 | **Domain** | Computer Vision / Deep Learning |
 | **Language** | Python 3.10 |
 | **Framework** | PyTorch + Streamlit |
-| **Model** | ResNet50 (ImageNet pretrained) |
+| **Models** | ResNet50 (2048-D), ViT-B/16 (768-D) |
+| **Model Comparison** | Accuracy, speed, and feature size benchmarking |
+| **Indexing** | FAISS (fast search) + Cosine Similarity |
 | **Total Images** | 25,144 (combined across 4 datasets) |
-| **Best mAP** | 97.63% (Corel-1K) |
+| **Best mAP** | 99.24% (ViT-B/16, Caltech-101) |
 | **Date** | February 2026 |
+
+---
+
+## New Capabilities
+
+- **ViT-B/16 support**: Compact, fast, and accurate transformer-based features
+- **Model selection and benchmarking**: Compare ResNet50 vs ViT-B/16 on any dataset
+- **Modern visualizations**: Grouped bar charts, dashboards, radar charts
+- **FAISS integration**: Real-time search for large-scale datasets
+- **All results, graphs, and usage guides updated for both models**
 
 ---
 
