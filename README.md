@@ -80,6 +80,20 @@ CBIR_Project/
 
 ---
 
+## Important Note: Local Data
+
+> **Dataset and Features Not Included**  
+> The `dataset/` (25K+ images) and `features/` (.pkl files ~500MB+) directories are **kept local** for privacy and repository size reasons. They are excluded via `.gitignore`.
+
+**To run this project locally:**
+1. Download the datasets (Corel-1K, Corel-5K, Corel-10K, Caltech-101) and place them in `dataset/`
+2. Run feature extraction: `python src/extractor.py` (ResNet50) or `python src/extractor_vit.py` (ViT-B/16)
+3. The system will generate the required `.pkl` feature files automatically
+
+The code is fully ready for classification and retrieval tasks once you provide your own image data.
+
+---
+
 ## Commands
 
 | Action | Command |
@@ -98,10 +112,11 @@ CBIR_Project/
 
 | Component | Technology |
 |:----------|:-----------|
-| Model | ResNet50 (ImageNet pretrained) |
-| Features | 2048-D vectors, L2 normalized |
+| Models | ResNet50, ViT-B/16 (ImageNet pretrained) |
+| Features | 2048-D (ResNet), 768-D (ViT), L2 normalized |
 | Similarity | Cosine Similarity |
-| Backend | PyTorch, scikit-learn |
+| Indexing | FAISS (optional fast search) |
+| Backend | PyTorch, scikit-learn, timm |
 | Frontend | Streamlit |
 | Language | Python 3.10 |
 
