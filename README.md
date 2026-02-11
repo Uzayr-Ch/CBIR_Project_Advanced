@@ -71,12 +71,35 @@ CBIR_Project/
 
 ## Results
 
-| Dataset | Images | Categories | mAP (%) | Latency (ms) |
-|:--------|-------:|-----------:|--------:|-------------:|
-| Corel-1K | 1,000 | 10 | **97.63** | 9.70 |
-| Corel-5K | 5,000 | 50 | **51.90** | 36.95 |
-| Caltech-101 | 9,144 | 102 | **85.20** | 65.99 |
-| Corel-10K | 10,000 | 100 | **81.92** | 77.47 |
+### ResNet50 vs ViT-B/16 Comparison
+
+| Dataset | Model | mAP (%) | Retrieval Latency (ms) | Winner |
+|:--------|:------|--------:|-----------------------:|:------:|
+| Corel-1K | ResNet50 | 95.74 | 6.47 | |
+| Corel-1K | **ViT-B/16** | **96.16** | **2.89** | ✓ ViT |
+| Corel-5K | **ResNet50** | **51.56** | 33.97 | ✓ ResNet |
+| Corel-5K | ViT-B/16 | 49.26 | **14.53** | |
+| Corel-10K | **ResNet50** | **85.40** | 69.95 | ✓ ResNet |
+| Corel-10K | ViT-B/16 | 77.72 | **27.54** | |
+| Caltech-101 | ResNet50 | 99.02 | 64.53 | |
+| Caltech-101 | **ViT-B/16** | **99.24** | **25.05** | ✓ ViT |
+
+### Key Findings
+
+| Metric | ResNet50 | ViT-B/16 | Insight |
+|:-------|:--------:|:--------:|:--------|
+| Best Accuracy | Corel-5K, Corel-10K | Corel-1K, Caltech-101 | ViT excels on smaller/structured datasets |
+| Avg Speedup | - | **2.5x faster** | ViT features enable faster retrieval |
+| Feature Dimension | 2048-D | 768-D | ViT is more compact |
+
+### Dataset Statistics
+
+| Dataset | Images | Categories | Best mAP (%) |
+|:--------|-------:|-----------:|-------------:|
+| Corel-1K | 1,000 | 10 | 96.16 (ViT) |
+| Corel-5K | 5,000 | 50 | 51.56 (ResNet) |
+| Corel-10K | 10,000 | 100 | 85.40 (ResNet) |
+| Caltech-101 | 9,144 | 102 | 99.24 (ViT) |
 
 ---
 
@@ -99,7 +122,9 @@ The code is fully ready for classification and retrieval tasks once you provide 
 | Action | Command |
 |:-------|:--------|
 | Start Web App | `streamlit run src/app.py` |
-| Extract Features | `python src/extractor.py` |
+| Extract Features (ResNet50) | `python src/extractor.py` |
+| Extract Features (ViT-B/16) | `python src/extractor_vit.py` |
+| Compare Models | `python src/compare_benchmarks.py --max-queries 500` |
 | Evaluate All Datasets | `python src/batch_evaluate.py` |
 | Generate Graphs | `python src/generate_graphs.py` |
 | Validate Images | `python src/validate_data.py` |
