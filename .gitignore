@@ -1,0 +1,43 @@
+# Virtual environment
+cbir_env/
+
+# Raw images (25K+ files)
+dataset/
+
+# Large .pkl feature banks
+features/
+
+# Python cache
+__pycache__/
+
+# System files
+.DS_Store
+
+# Any other pickle files
+*.pkl
+
+# Large generated model files
+outputs/
+
+# IDE files
+.vscode/
+.idea/
+*.pyc
+*.pyo
+*.swp
+*.swo
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Python distribution
+*.egg-info/
+dist/
+build/
+
+# OS files
+Thumbs.db
+desktop.ini
+
+# Log files
+*.log
